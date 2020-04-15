@@ -13,12 +13,11 @@ class MastermindApp < Sinatra::Base
   set :root, 'lib/app'
 
   get '/' do
-    session[:message] = "hi"
-    p session
-    "ok"
+    erb :index
   end
 
-  get '/hello' do
-    session[:message]
+  post '/' do 
+    p params
+    "got your guess"
   end
 end
