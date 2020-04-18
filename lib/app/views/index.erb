@@ -38,3 +38,13 @@
   </select>
   <input type="submit" value="Guess" />
 </form>
+
+<h2>Board</h2>
+<% colors.each do |row| %>
+  <div class="container">
+    <% row.each do |color| %>
+      <div class="peg" style="background-color:<%= color %>"></div>
+    <% end %>
+  </div>
+<% end %>
+

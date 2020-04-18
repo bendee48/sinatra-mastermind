@@ -1,0 +1,15 @@
+.container {
+  height: 50px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:blue;
+}
+
+div.peg {
+  height: 20px;
+  width: 20px;
+  margin: 20px;
+  background-color: black;
+}

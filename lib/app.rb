@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/base'
 require 'sysrandom/securerandom'
+require_relative 'mastermind/colors'
 require 'sinatra/reloader' if development?
 
 class MastermindApp < Sinatra::Base
@@ -12,12 +13,17 @@ class MastermindApp < Sinatra::Base
 
   set :root, 'lib/app'
 
+  @@colors = Colors.new
+
   get '/' do
-    erb :index
+    p @@colors
+    colors = @@colors.selected.reverse
+    erb :index, locals: { colors: colors }
   end
 
   post '/' do 
-    p params
-    "got your guess"
+    @@colors.add_colors(params.values)
+    params.values
+    redirect '/'
   end
 end
