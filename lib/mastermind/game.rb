@@ -1,3 +1,5 @@
+require_relative 'colors'
+
 class Game
   attr_reader :code
   COLORS = %w[red green yellow cyan magenta black]
