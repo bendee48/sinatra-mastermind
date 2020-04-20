@@ -39,12 +39,21 @@
   <input type="submit" value="Guess" />
 </form>
 
+<form action='/start' method='POST'>
+  <input type="submit" value="Start"/>
+</form>
+
 <h2>Board</h2>
-<% colors.each do |row| %>
+<% feedback.each do |feedback_obj| %>
   <div class="container">
-    <% row.each do |color| %>
-      <div class="peg" style="background-color:<%= color %>"></div>
+    <% feedback_obj.colors.each do |color| %>
+      <div class="color-peg" style="background-color:<%= color %>"></div>
     <% end %>
+    <div class="feedback-container">
+      <% feedback_obj.feedback.each do |color| %>
+        <div class="feedback-peg" style="background-color:<%= color %>"></div>
+      <% end %>
+    </div>
   </div>
 <% end %>
 
