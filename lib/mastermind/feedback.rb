@@ -1,4 +1,17 @@
 class Feedback
+  attr_accessor :colors, :feedback
+  @@all = []
+
+  def initialize(colors, feedback)
+    @colors = colors
+    @feedback = feedback
+    @@all.unshift(self)
+  end
+
+  def self.all
+    @@all
+  end
+
   def self.result(code, guess)
     feedback = []
     used = []
