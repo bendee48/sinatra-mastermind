@@ -44,13 +44,13 @@
 </form>
 
 <h2>Board</h2>
-<% feedback.each do |feedback_obj| %>
+<% feedback.reverse_each do |feedback_obj| %>
   <div class="container">
-    <% feedback_obj.colors.each do |color| %>
+    <% feedback_obj.guess.each do |color| %>
       <div class="color-peg" style="background-color:<%= color %>"></div>
     <% end %>
     <div class="feedback-container">
-      <% feedback_obj.feedback.each do |color| %>
+      <% feedback_obj.result.each do |color| %>
         <div class="feedback-peg" style="background-color:<%= color %>"></div>
       <% end %>
     </div>

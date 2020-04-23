@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/base'
 require 'sysrandom/securerandom'
-require_relative 'mastermind/feedback'
+require_relative 'mastermind/game'
 require 'sinatra/reloader' if development?
 
 class MastermindApp < Sinatra::Base
@@ -13,21 +13,22 @@ class MastermindApp < Sinatra::Base
 
   set :root, 'lib/app'
 
-  @@code = ['red', 'cyan', 'black', 'magenta']
+  @@game = Game.new
 
   get '/' do
-    feedback = Feedback.all
+    p @@game.win
+    feedback = @@game.feedbacks
     erb :index, locals: { feedback: feedback }
   end
 
   post '/' do
     guess = params.values
-    feedback = Feedback.result(@@code, guess)
-    session[:feedback] = Feedback.new(guess, feedback)
+    @@game.create_feedback(guess)
     redirect '/'
   end
 
   post '/start' do
+    @@game = Game.new
     redirect '/'
   end
 end
