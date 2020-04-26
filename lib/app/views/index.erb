@@ -1,6 +1,6 @@
 <h1>Mastermind</h1>
 <form action="/" method='POST'>
-  <label for="first-color">Select 1st colour:</label>
+  <label for="first-color"></label>
   <select id="first-color" name="first-color">
     <option value="red">Red</option>
     <option value="green">Green</option>
@@ -9,7 +9,7 @@
     <option value="magenta">Magenta</option>
     <option value="black">Black</option>
   </select>
-  <label for="second-color">Select 2nd colour:</label>
+  <label for="second-color"></label>
   <select id="second-color" name="second-color">
     <option value="red">Red</option>
     <option value="green">Green</option>
@@ -18,7 +18,7 @@
     <option value="magenta">Magenta</option>
     <option value="black">Black</option>
   </select>
-  <label for="third-color">Select third colour:</label>
+  <label for="third-color"></label>
   <select id="third-color" name="third-color">
     <option value="red" name="red">Red</option>
     <option value="green">Green</option>
@@ -27,7 +27,7 @@
     <option value="magenta">Magenta</option>
     <option value="black">Black</option>
   </select>
-  <label for="fourth-color">Select fourth colour:</label>
+  <label for="fourth-color"></label>
   <select id="fourth-color" name="fourth-color">
     <option value="red">Red</option>
     <option value="green">Green</option>
@@ -47,22 +47,20 @@
   <input type="submit" value="Restart"/>
 </form>
 
-<h1>
-  <% if message %>
-    <%= message %>
-  <% end %>
-</h1>
+<% if message %>
+  <h1><%= message %></h1>
+<% end %>
 
+<!-- Show code -->
 <% if session[:game].win || session[:game].game_over %>
   <h2>Code</h2>
-  <div class="container">
+  <div class="code">
     <% session[:game].code.colours.each do |colour| %>
       <div class="color-peg" style="background-color:<%= colour %>"></div>
     <% end %>
   </div>
 <% end %>
 
-<h2>Board</h2>
 <% feedback.reverse_each do |feedback_obj| %>
   <div class="container">
     <% feedback_obj.guess.each do |color| %>
