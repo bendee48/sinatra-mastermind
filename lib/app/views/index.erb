@@ -36,12 +36,20 @@
     <option value="magenta">Magenta</option>
     <option value="black">Black</option>
   </select>
-  <input type="submit" value="Guess" />
+  <% unless session[:game].win || session[:game].game_over %>
+    <input type="submit" value="Guess" />
+  <% end %>
 </form>
 
 <form action='/start' method='POST'>
-  <input type="submit" value="Start"/>
+  <input type="submit" value="Restart"/>
 </form>
+
+<h1>
+  <% if message %>
+    <%= message %>
+  <% end %>
+</h1>
 
 <h2>Board</h2>
 <% feedback.reverse_each do |feedback_obj| %>

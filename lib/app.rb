@@ -5,7 +5,7 @@ require_relative 'mastermind/game'
 require 'sinatra/reloader' if development?
 
 class MastermindApp < Sinatra::Base
-  configure :development do 
+  configure :development do
     register Sinatra::Reloader
     enable :sessions
     set :session_secret, ENV.fetch('MASTERMIND_SESSION_SECRET') { SecureRandom.hex(64) }
@@ -14,11 +14,20 @@ class MastermindApp < Sinatra::Base
   set :root, 'lib/app'
 
   @@game = Game.new
-
+  
   get '/' do
-    p @@game.win
+    session[:game] = @@game
+    if @@game.win
+      session[:message] = "You win!"
+      message = session.delete(:message)
+    end
+    p session
+    if @@game.game_over
+      session[:message] = "Game Over!"
+      message = session.delete(:message)
+    end
     feedback = @@game.feedbacks
-    erb :index, locals: { feedback: feedback }
+    erb :index, locals: { feedback: feedback, message: message }
   end
 
   post '/' do
@@ -28,7 +37,11 @@ class MastermindApp < Sinatra::Base
   end
 
   post '/start' do
-    @@game = Game.new
+    reset
     redirect '/'
+  end
+
+  def reset 
+    @@game = Game.new
   end
 end
