@@ -40,6 +40,10 @@ class MastermindApp < Sinatra::Base
     redirect '/'
   end
 
+  get '/instructions' do
+    erb :instructions
+  end
+
   def reset 
     @@game = Game.new
   end
