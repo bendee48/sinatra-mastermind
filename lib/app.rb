@@ -21,7 +21,6 @@ class MastermindApp < Sinatra::Base
       session[:message] = "You win!"
       message = session.delete(:message)
     end
-    p session
     if @@game.game_over
       session[:message] = "Game Over!"
       message = session.delete(:message)

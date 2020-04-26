@@ -36,9 +36,11 @@
     <option value="magenta">Magenta</option>
     <option value="black">Black</option>
   </select>
-  <% unless session[:game].win || session[:game].game_over %>
-    <input type="submit" value="Guess" />
-  <% end %>
+    <% if session[:game].win || session[:game].game_over %>    
+      <input type="submit" value="Guess" style="display:none" />
+    <% else %>
+      <input type="submit" value="Guess" />
+    <% end %>
 </form>
 
 <form action='/start' method='POST'>
@@ -50,6 +52,15 @@
     <%= message %>
   <% end %>
 </h1>
+
+<% if session[:game].win || session[:game].game_over %>
+  <h2>Code</h2>
+  <div class="container">
+    <% session[:game].code.colours.each do |colour| %>
+      <div class="color-peg" style="background-color:<%= colour %>"></div>
+    <% end %>
+  </div>
+<% end %>
 
 <h2>Board</h2>
 <% feedback.reverse_each do |feedback_obj| %>
