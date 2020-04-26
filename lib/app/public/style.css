@@ -72,9 +72,13 @@ a {
   text-decoration: none;
 }
 
-a.instructions {
-  align-self: flex-end;
-  margin-right: 10px;
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
 }
+
+
 
 

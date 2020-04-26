@@ -43,12 +43,13 @@
     <% end %>
 </form>
 
-<form action='/start' method='POST'>
-  <input type="submit" value="Restart"/>
-</form>
+<p>Turn: <%= turns %></p>
 
 <% if message %>
   <h1><%= message %></h1>
+  <form action='/start' method='POST'>
+    <input type="submit" value="Restart"/>
+  </form>
 <% end %>
 
 <!-- Show code -->
@@ -74,5 +75,9 @@
   </div>
 <% end %>
 
-<a class="instructions" href="/instructions">Instructions</a>
-
+<div class="footer">
+    <form action='/start' method='POST'>
+      <input type="submit" value="Restart"/>
+    </form>
+    <a href="/instructions">Instructions</a>
+</div>

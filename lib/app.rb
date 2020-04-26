@@ -26,7 +26,8 @@ class MastermindApp < Sinatra::Base
       message = session.delete(:message)
     end
     feedback = @@game.feedbacks
-    erb :index, locals: { feedback: feedback, message: message }
+    turns = @@game.turns
+    erb :index, locals: { feedback: feedback, message: message, turns: turns }
   end
 
   post '/' do
