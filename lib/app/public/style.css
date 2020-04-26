@@ -1,5 +1,6 @@
 body {
   font-family: Calibri, sans-script;
+  background-color: #fdf5dd;
 }
 
 main {
@@ -32,13 +33,14 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:#885a2c;
+  background-color:#684522;
 }
 
 div.color-peg {
   height: 20px;
   width: 20px;
   margin: 20px;
+  border-radius: 25%;
 }
 
 div.feedback-container {
@@ -55,7 +57,7 @@ div.feedback-peg {
   height: 10px;
   width: 10px;
   margin: 5px;
-  background-color: chartreuse;
+  border-radius: 100%;
 }
 
 div.instructions-container {
