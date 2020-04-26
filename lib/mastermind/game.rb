@@ -1,19 +1,16 @@
 require_relative './combination'
+require_relative './code_generate'
 
 class Game
   attr_reader :code
   attr_accessor :feedbacks, :win, :turns, :game_over
 
   def initialize
-    @code = code_generate
+    @code = CodeGenerate.generate
     @feedbacks = []
     @turns = 0
     @win = false
     @game_over = false
-  end
-
-  def code_generate
-    Combination.new(['red', 'cyan', 'black', 'magenta'])
   end
 
   def create_feedback(guess)
